@@ -1,6 +1,28 @@
 <main class="container">
     <div class="button-container">
-        <button [routerLink]="['/list']" mat-raised-button color="primary">Voltar</button>
+        <button [routerLink]="['/list']" mat-raised-button color="basic">Voltar</button>
+        <button class="button-align" mat-raised-button color="primary">Salvar</button>
+    </div>
+    <div class="form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Preco</mat-label>
+            <input matInput placeholder="">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Quantidade</mat-label>
+            <input matInput placeholder="">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Descricao</mat-label>
+            <textarea matInput placeholder=""></textarea>
+        </mat-form-field>
     </div>
 </main>
 
@@ -8,6 +30,16 @@
     .button-container {
         display: flex;
         justify-content: flex-start;
+        margin-top: 2rem;
+    }
+
+    .button-align {
+        margin-left: auto;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
         margin-top: 2rem;
     }
 </style>

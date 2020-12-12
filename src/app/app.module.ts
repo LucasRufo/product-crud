@@ -11,8 +11,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ListComponent } from './Main/list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { ProductService } from './Main/service/product.service';
 import { CreateComponent } from './Main/create/create.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+
+import { ProductService } from './Main/service/product.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,11 @@ import { CreateComponent } from './Main/create/create.component';
     MatToolbarModule,
     MatTableModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    FormsModule
   ],
   providers: [
     ProductService,
