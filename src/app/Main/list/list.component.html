@@ -1,9 +1,9 @@
 <main class="container">
     <div class="button-container">
-        <button mat-raised-button color="primary">Novo Produto +</button>
+        <button [routerLink]="['/create']" mat-raised-button color="primary">Novo Produto +</button>
     </div>
     <div class="table-container">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <table mat-table [dataSource]="productList" class="mat-elevation-z8">
 
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> ID </th>
