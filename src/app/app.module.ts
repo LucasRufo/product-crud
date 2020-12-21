@@ -4,27 +4,35 @@ import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './Header/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ListComponent } from './Main/list/list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { CreateComponent } from './Main/create/create.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { ListComponent } from './Main/list/list.component';
+import { HeaderComponent } from './Header/header/header.component';
+import { CreateComponent } from './Main/create/create.component';
+import { AppComponent } from './app.component';
 
 import { ProductService } from './Main/service/product.service';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ListComponent,
-    CreateComponent
+    CreateComponent,
+    NotFoundComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +45,15 @@ import { ProductService } from './Main/service/product.service';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    CurrencyMaskModule,
+    MatSnackBarModule
   ],
   providers: [
     ProductService,
-    { provide: APP_BASE_HREF, useValue: '/' }
+    ToastComponent,
+    { provide: APP_BASE_HREF, useValue: '/' },
   ],
   bootstrap: [AppComponent]
 })

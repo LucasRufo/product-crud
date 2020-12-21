@@ -1,32 +1,60 @@
 <main class="container">
     <div class="button-container">
         <button [routerLink]="['/list']" mat-raised-button color="basic">Voltar</button>
-        <button class="button-align" mat-raised-button color="primary">Salvar</button>
+        <button (click)="submitForm()" class="button-align" mat-raised-button color="primary">Salvar</button>
     </div>
-    <div class="form-container">
+    <form [formGroup]="produtoForm" class="form-container">
         <mat-form-field appearance="outline">
             <mat-label>Nome</mat-label>
-            <input matInput placeholder="">
+            <input type="text" matInput formControlName="nome">
+            <mat-error class="" *ngIf="nome?.errors?.required">
+                O nome do produto é obrigatório
+            </mat-error>
+            <mat-error *ngIf="nome?.errors?.maxLength">
+                O nome não pode exceder 50 caracteres
+            </mat-error>
+            <mat-error *ngIf="nome?.errors?.minLength">
+                O nome não pode ter menos que 3 caracteres
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Preco</mat-label>
-            <input matInput placeholder="">
+            <input currencyMask matInput [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
+                formControlName="preco">
+            <mat-error *ngIf="preco?.errors?.required">
+                O preço do produto é obrigatório
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
             <mat-label>Quantidade</mat-label>
-            <input matInput placeholder="">
+            <input type="number" matInput formControlName="quantidade">
+            <mat-error *ngIf="quantidade?.errors?.required">
+                A quantidade do produto é obrigatório
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Descricao</mat-label>
-            <textarea matInput placeholder=""></textarea>
+            <mat-label>Descrição</mat-label>
+            <textarea matInput formControlName="descricao"></textarea>
+            <mat-error *ngIf="descricao?.errors?.required">
+                A descrição do produto é obrigatória
+            </mat-error>
+            <mat-error *ngIf="descricao?.errors?.maxLength">
+                A descrição não pode exceder 300 caracteres
+            </mat-error>
         </mat-form-field>
-    </div>
+    </form>
 </main>
 
 <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
     .button-container {
         display: flex;
         justify-content: flex-start;
