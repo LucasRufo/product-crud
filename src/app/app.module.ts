@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
+
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ListComponent } from './Main/list/list.component';
 import { HeaderComponent } from './Header/header/header.component';
@@ -24,6 +30,7 @@ import { AppComponent } from './app.component';
 import { ProductService } from './Main/service/product.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToastComponent } from './toast/toast.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +39,8 @@ import { ToastComponent } from './toast/toast.component';
     ListComponent,
     CreateComponent,
     NotFoundComponent,
-    ToastComponent
+    ToastComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,9 @@ import { ToastComponent } from './toast/toast.component';
     FormsModule,
     ReactiveFormsModule,
     CurrencyMaskModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     ProductService,

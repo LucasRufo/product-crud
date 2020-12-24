@@ -10,14 +10,26 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  protected baseUri: string = "https://4121cf5c7d0a.ngrok.io/";
+  protected baseUri: string = "https://8ba90897b3eb.ngrok.io/";
 
   get(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.baseUri + "produtos");
+    return this.http.get<Produto[]>(this.baseUri + "produtos/");
   }
 
-  post(produto: Produto): Observable<Produto[]> {
-    return this.http.post<any>(this.baseUri + "produtos", { produto: produto });
+  getById(id: string): Observable<Produto> {
+    return this.http.get<Produto>(this.baseUri + "produtos/" + id);
+  }
+
+  post(produto: Produto): Observable<any> {
+    return this.http.post<any>(this.baseUri + "produtos/", produto);
+  }
+
+  put(produto: Produto): Observable<any> {
+    return this.http.put<any>(this.baseUri + "produtos/", produto);
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete<any>(this.baseUri + "produtos/" + id);
   }
 
 }

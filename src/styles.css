@@ -17,6 +17,18 @@ body {
     color: white;
 }
 
+.warning-color {
+    background: #e42e40;
+    color: white;
+}
+
 .mat-simple-snackbar-action {
     color: white !important;
+}
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
 }

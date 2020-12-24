@@ -1,25 +1,29 @@
 <main class="container">
     <div class="button-container">
-        <button [routerLink]="['/list']" mat-raised-button color="basic">Voltar</button>
-        <button (click)="submitForm()" class="button-align" mat-raised-button color="primary">Salvar</button>
+        <button [disabled]='loading' [routerLink]="['/list']" mat-raised-button color="basic">Voltar</button>
+        <button [disabled]='loading' (click)="submitForm()" class="button-align" mat-raised-button
+            color="primary">Salvar</button>
     </div>
-    <form [formGroup]="produtoForm" class="form-container">
+    <div class="loading-container" *ngIf="loading">
+        <mat-spinner class="loading" diameter="50"></mat-spinner>
+    </div>
+    <form *ngIf="!loading" [formGroup]="produtoForm" class="form-container">
         <mat-form-field appearance="outline">
             <mat-label>Nome</mat-label>
             <input type="text" matInput formControlName="nome">
             <mat-error class="" *ngIf="nome?.errors?.required">
                 O nome do produto é obrigatório
             </mat-error>
-            <mat-error *ngIf="nome?.errors?.maxLength">
+            <mat-error *ngIf="nome?.errors?.maxlength">
                 O nome não pode exceder 50 caracteres
             </mat-error>
-            <mat-error *ngIf="nome?.errors?.minLength">
+            <mat-error *ngIf="nome?.errors?.minlength">
                 O nome não pode ter menos que 3 caracteres
             </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>Preco</mat-label>
+            <mat-label>Preço</mat-label>
             <input currencyMask matInput [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align : 'left' }"
                 formControlName="preco">
             <mat-error *ngIf="preco?.errors?.required">
@@ -41,7 +45,7 @@
             <mat-error *ngIf="descricao?.errors?.required">
                 A descrição do produto é obrigatória
             </mat-error>
-            <mat-error *ngIf="descricao?.errors?.maxLength">
+            <mat-error *ngIf="descricao?.errors?.maxlength">
                 A descrição não pode exceder 300 caracteres
             </mat-error>
         </mat-form-field>
